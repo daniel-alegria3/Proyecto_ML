@@ -3,3 +3,32 @@
 
 \section{Descripción del dataset}
 
+El dataset utilizado corresponde a mediciones de la estación Torre de Gradiente
+del Laboratorio de Micro Física Atmosférica y Radiación (LAMAR) del Instituto
+Geofísico del Perú (IGP), ubicada en Junín, Perú (-12.0399°S, -75.3207°W,
+3316.78 m.s.n.m.). El dataset comprende registros meteorológicos desde mayo de
+2018 hasta marzo de 2025.
+
+El dataset contiene mediciones de una torre meteorológica de 30 metros de altura
+con sensores distribuidos en diferentes niveles (2, 6, 12, 18, 24 y 29 metros)
+que registran las principales variables atmosféricas con resolución temporal de
+un minuto. Las mediciones incluyen temperatura y humedad relativa mediante
+sondas HMP60 de Campbell Scientific, así como velocidad y dirección del viento
+utilizando conjuntos Wind Sentry 03002.
+
+\subsection{Estructura del dataset}
+El dataset se compone de \textbf{25 columnas} principales que incluyen:
+
+\begin{itemize}
+    \item \textbf{Variables temporales}: FECHA\_CORTE, UBIGEO, year, month, day, hour
+    \item \textbf{Temperatura del aire}: temp\_n1 a temp\_n6 (mediciones en 6 niveles, °C)
+    \item \textbf{Velocidad del viento}: wind\_n1 a wind\_n6 (mediciones en 6 niveles, m/s)
+    \item \textbf{Humedad relativa}: RH\_n1 a RH\_n6 (mediciones en 6 niveles, \%)
+    \item \textbf{Dirección del viento}: dir\_wind\_01 y dir\_wind\_02 (18m y 29m, grados)
+    \item \textbf{Variable objetivo}: soil\_heat (flujo de calor del suelo a 8 cm, W/m²)
+\end{itemize}
+
+Todas las variables numéricas se almacenan con precisión de cinco decimales, con
+valores enteros positivos para viento y humedad, y posibles valores negativos
+para temperatura y flujo de calor del suelo.
+

@@ -2,4 +2,95 @@
 % Presentación de resultados preliminares mediante métricas acordes al tipo de problema.
 
 \section{Modelo entrenado y resultados preliminares}
+\subsection{Modelos implementados}
+Se entrenaron tres modelos de aprendizaje automático con los siguientes parámetros:
+
+\begin{enumerate}
+    \item \textbf{Regresión Lineal}: Modelo baseline con regularización estándar
+    \item \textbf{Random Forest}: Ensamble de 100 árboles de decisión con paralelización
+    \item \textbf{Gradient Boosting}: Boosting secuencial con 100 estimadores
+\end{enumerate}
+
+\subsection{División de datos y estrategia de validación}
+\begin{itemize}
+    \item \textbf{Entrenamiento}: 43,842 muestras (80\%)
+    \item \textbf{Prueba}: 10,961 muestras (20\%)
+    \item \textbf{Estrategia}: División aleatoria estratificada (seed=42)
+    \item \textbf{Características}: 35 variables predictoras procesadas
+\end{itemize}
+
+\subsection{Métricas de evaluación}
+Para evaluar el rendimiento de los modelos de regresión se utilizaron:
+
+\begin{itemize}
+    \item \textbf{R² (Coeficiente de determinación)}: Proporción de varianza explicada
+    \item \textbf{MSE (Error cuadrático medio)}: Penalización cuadrática de errores grandes
+    \item \textbf{MAE (Error absoluto medio)}: Medida robusta de error promedio
+\end{itemize}
+
+\subsection{Resultados experimentales}
+Los modelos mostraron el siguiente rendimiento diferenciado:
+
+\begin{table}[h]
+\hspace{-1cm}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Modelo} & \textbf{R² Train} & \textbf{R² Test} & \textbf{MSE Train} & \textbf{MSE Test} & \textbf{MAE Train} & \textbf{MAE Test} \\
+\hline
+Regresión Lineal & 0.2460 & 0.2187 & 640,539 & 656,706 & 548.18 & 545.68 \\
+Random Forest & \textbf{0.9375} & \textbf{0.5588} & 53,124 & 370,880 & 112.42 & 298.30 \\
+Gradient Boosting & 0.3379 & 0.3229 & 562,421 & 569,143 & 504.24 & 509.49 \\
+\hline
+\end{tabular}
+\caption{Métricas de rendimiento comparativo de los tres modelos}
+\end{table}
+
+\subsection{Análisis de resultados}
+
+\subsubsection{Modelo ganador: Random Forest}
+\textbf{Random Forest} emergió como el modelo superior con:
+\begin{itemize}
+    \item \textbf{R² = 0.5588}: Explica 55.88\% de la variabilidad del flujo de calor
+    \item \textbf{MSE = 370,880 W²/m$^4$}: Error cuadrático moderado
+    \item \textbf{MAE = 298.30 W/m²}: Error absoluto promedio aceptable
+\end{itemize}
+
+\subsubsection{Detección de sobreajuste}
+El análisis revela \textbf{sobreajuste moderado en Random Forest}:
+\begin{itemize}
+    \item R² Train (0.9375) $>>$ R² Test (0.5588)
+    \item Diferencia de 0.38 puntos indica memorización de patrones de entrenamiento
+    \item MSE aumenta significativamente de entrenamiento (53K) a prueba (371K)
+\end{itemize}
+
+\subsubsection{Rendimiento comparativo}
+\begin{itemize}
+    \item \textbf{Regresión Lineal}: Rendimiento consistente pero limitado (R² $\approx$ 0.22)
+    \item \textbf{Gradient Boosting}: Mejor generalización que Random Forest (R² = 0.32)
+    \item \textbf{Random Forest}: Mayor capacidad predictiva pero con sobreajuste
+\end{itemize}
+
+Las visualizaciones implementadas permiten evaluar:
+\begin{itemize}
+    \item \textbf{Predicciones vs. valores reales}: Correlación visual del modelo ganador
+    \item \textbf{Análisis de residuos}: Detección de heterocedasticidad y patrones
+    \item \textbf{Distribución de errores}: Verificación de normalidad en residuos
+    \item \textbf{Importancia de características}: Ranking de variables meteorológicas influyentes
+\end{itemize}
+
+\subsubsection{Interpretación de resultados}
+El \textbf{R² = 0.5588} indica que el modelo Random Forest captura efectivamente:
+\begin{itemize}
+    \item Patrones de intercambio energético superficie-atmósfera
+    \item Relaciones no-lineales entre variables meteorológicas
+    \item Efectos de gradientes verticales de temperatura y viento
+    \item Ciclos temporales diurnos y estacionales
+\end{itemize}
+
+El error absoluto medio de \textbf{298.30 W/m²} es razonable considerando:
+\begin{itemize}
+    \item Rango de soil\_heat: [-4,000, +4,132] W/m² (8,132 W/m² total)
+    \item Error relativo: $\sim$7.3\% del rango total
+    \item Variabilidad natural alta en flujos de calor en ecosistemas montanos
+\end{itemize}
 
