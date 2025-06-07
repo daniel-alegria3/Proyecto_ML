@@ -1,5 +1,7 @@
 # Análisis de Machine Learning - Torre de Gradiente
 
+**📓 Acceso directo al notebook**: [codigo/main.ipynb](./codigo/main.ipynb)
+
 ## Descripción
 
 Este proyecto implementa análisis de machine learning para la predicción del
