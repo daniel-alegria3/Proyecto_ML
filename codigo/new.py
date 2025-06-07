@@ -171,6 +171,22 @@ plt.show()
 # Crear una copia para trabajar
 df_processed = df.copy()
 
+# Construir un índice temporal (hora promedio del registro)
+df_processed['timestamp'] = pd.to_datetime(dict(year=df_processed['year'],
+                                           month=df_processed['month'],
+                                           day=df_processed['day'],
+                                           hour=df_processed['hour']))
+# Ordenar por el timestamp
+df_processed = df_processed.sort_values('timestamp').reset_index(drop=True)
+df_processed.set_index('timestamp', inplace=True)
+
+# Aplicar interpolación por tiempo
+df_processed = df_processed.interpolate(method='time')
+
+# Verificación: revisar valores faltantes después de la interpolación
+missing_after = df_processed.isnull().sum()
+print("Valores faltantes después de la interpolación:\n", missing_after)
+
 # Crear características temporales
 if 'hour' in df_processed.columns:
     df_processed['hour_sin'] = np.sin(2 * np.pi * df_processed['hour'] / 24)

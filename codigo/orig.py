@@ -201,14 +201,30 @@ class TorreGradienteML:
         plt.show()
 
         print("✓ Visualizaciones generadas exitosamente")
-
     def preprocess_data(self):
         """Limpieza y preparación del dataset"""
         if self.df is None:
             print("❌ Primero debe cargar los datos")
             return
 
+        # Construir un índice temporal (hora promedio del registro)
+        self.df['timestamp'] = pd.to_datetime(dict(year=self.df['year'],
+                                            month=self.df['month'],
+                                            day=self.df['day'],
+                                            hour=self.df['hour']))
+
+        # Ordenar por el timestamp
+        self.df = self.df.sort_values('timestamp').reset_index(drop=True)
+        self.df.set_index('timestamp', inplace=True)
+
+        # Aplicar interpolación por tiempo
+        self.df = self.df.interpolate(method='time')
+
+        # Verificación: revisar valores faltantes después de la interpolación
+        missing_after = self.df.isnull().sum()
+        print("Valores faltantes después de la interpolación:\n", missing_after)
         print("\n" + "=" * 60)
+
         print("METODOLOGÍA DE PREPROCESAMIENTO")
         print("=" * 60)
 
