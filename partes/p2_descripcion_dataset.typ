@@ -1,7 +1,7 @@
-% Redactar la cantidad de filas y columnas. Describir los metadatos del dataset
-% y el dicionario de datos
+/// Redactar la cantidad de filas y columnas. Describir los metadatos del dataset
+/// y el dicionario de datos
 
-\section{Descripción del dataset}
+#heading(level:1)[Descripción del dataset]
 
 El dataset utilizado corresponde a mediciones de la estación Torre de Gradiente
 del Laboratorio de Micro Física Atmosférica y Radiación (LAMAR) del Instituto
@@ -16,17 +16,15 @@ un minuto. Las mediciones incluyen temperatura y humedad relativa mediante
 sondas HMP60 de Campbell Scientific, así como velocidad y dirección del viento
 utilizando conjuntos Wind Sentry 03002.
 
-\subsection{Estructura del dataset}
-El dataset se compone de \textbf{25 columnas} principales que incluyen:
+#heading(level:2)[Estructura del dataset]
+El dataset se compone de *25 columnas* principales que incluyen:
 
-\begin{itemize}
-    \item \textbf{Variables temporales}: FECHA\_CORTE, UBIGEO, year, month, day, hour
-    \item \textbf{Temperatura del aire}: temp\_n1 a temp\_n6 (mediciones en 6 niveles, °C)
-    \item \textbf{Velocidad del viento}: wind\_n1 a wind\_n6 (mediciones en 6 niveles, m/s)
-    \item \textbf{Humedad relativa}: RH\_n1 a RH\_n6 (mediciones en 6 niveles, \%)
-    \item \textbf{Dirección del viento}: dir\_wind\_01 y dir\_wind\_02 (18m y 29m, grados)
-    \item \textbf{Variable objetivo}: soil\_heat (flujo de calor del suelo a 8 cm, W/m²)
-\end{itemize}
+- *Variables temporales*: FECHA_CORTE, UBIGEO, year, month, day, hour
+- *Temperatura del aire*: temp_n1 a temp_n6 (mediciones en 6 niveles, °C)
+- *Velocidad del viento*: wind_n1 a wind_n6 (mediciones en 6 niveles, m/s)
+- *Humedad relativa*: RH_n1 a RH_n6 (mediciones en 6 niveles, %)
+- *Dirección del viento*: dir_wind_01 y dir_wind_02 (18m y 29m, grados)
+- *Variable objetivo*: soil_heat (flujo de calor del suelo a 8 cm, W/m²)
 
 Todas las variables numéricas se almacenan con precisión de cinco decimales, con
 valores enteros positivos para viento y humedad, y posibles valores negativos

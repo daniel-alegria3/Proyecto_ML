@@ -1,10 +1,10 @@
-% Selección de un conjunto de datos pertinente, proveniente de una fuente
-% oficial de datos abiertos del Perú (https://datosabiertos.gob.pe/).
+/// Selección de un conjunto de datos pertinente, proveniente de una fuente
+/// oficial de datos abiertos del Perú (https://datosabiertos.gob.pe/).
 
-% Justificación del problema abordado, argumentando su relevancia técnica y
-% social.
+/// Justificación del problema abordado, argumentando su relevancia técnica y
+/// social.
 
-\section{Introducción del problema}
+#heading(level:1)[Introducción del problema]
 
 El monitoreo de variables meteorológicas en ecosistemas altoandinos es
 fundamental para comprender los procesos físicos que ocurren en la superficie
@@ -18,12 +18,12 @@ comportamiento climático en esta región.
 
 El objetivo principal del proyecto es desarrollar un modelo de aprendizaje
 automático de tipo regresión que permita predecir el flujo de calor del suelo
-\verb!soil_heat! a partir de las variables meteorológicas registradas. El flujo de
+`soil_heat` a partir de las variables meteorológicas registradas. El flujo de
 calor del suelo es una variable clave en el balance energético de la superficie,
 con implicancias directas en procesos como la evaporación, el crecimiento
 vegetal, la productividad agrícola y la dinámica hídrica.
 
-\subsection{Justificación del problema abordado}
+#heading(level:2)[Justificación del problema abordado]
 
 Desde un enfoque técnico, la predicción del flujo de calor del suelo utilizando
 modelos de aprendizaje automático representa un desafío interesante debido a la

@@ -1,12 +1,7 @@
-# Se necesita tener tectonic installado
+# Se necesita tener typst installado
 
-OUTPUT_DEPS = main.tex _preamble.tex _postamble.tex
+doc:
+	typst compile main.typ
 
-output: ${OUTPUT_DEPS}
-	tectonic -X compile main.tex
-
-clean:
-	rm -f main.aux main.log main.pyg main.xdv main.out
-
-.PHONY: clean
+.PHONY: doc
 
